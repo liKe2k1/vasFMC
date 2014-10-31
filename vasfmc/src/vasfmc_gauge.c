@@ -1,0 +1,89 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2005-2006 Martin Böhme
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+///////////////////////////////////////////////////////////////////////////////
+
+// vasfmc_gauge.c
+
+#include <fs9gauges.h>
+
+#include "vasfmc_gauge.h"
+#include "vasfmc_gauge_main.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// PFD
+/////////////////////////////////////////////////////////////////////////////
+
+#define		GAUGE_NAME			"pfd"
+#define		GAUGEHDR_VAR_NAME	pfd
+#define		GAUGE_W				100
+
+#include "vasfmc_gauge.pfd.c"
+
+/////////////////////////////////////////////////////////////////////////////
+// ND
+/////////////////////////////////////////////////////////////////////////////
+
+#define		GAUGE_NAME			"nd"
+#define		GAUGEHDR_VAR_NAME	nd
+#define		GAUGE_W				100
+
+#include "vasfmc_gauge.nd.c"
+
+/////////////////////////////////////////////////////////////////////////////
+// UECAM
+/////////////////////////////////////////////////////////////////////////////
+
+#define		GAUGE_NAME			"uecam"
+#define		GAUGEHDR_VAR_NAME	uecam
+#define		GAUGE_W				100
+
+#include "vasfmc_gauge.uecam.c"
+
+/////////////////////////////////////////////////////////////////////////////
+// MCDU
+/////////////////////////////////////////////////////////////////////////////
+
+#define		GAUGE_NAME			"mcdu"
+#define		GAUGEHDR_VAR_NAME	mcdu
+#define		GAUGE_W				MCDU_WIDTH
+
+#include "vasfmc_gauge.mcdu.c"
+
+/////////////////////////////////////////////////////////////////////////////
+// FCU
+/////////////////////////////////////////////////////////////////////////////
+
+#define		GAUGE_NAME			"fcu"
+#define		GAUGEHDR_VAR_NAME	fcu
+#define		GAUGE_W				FCU_WIDTH
+
+#include "vasfmc_gauge.fcu.c"
+
+/////////////////////////////////////////////////////////////////////////////
+// Gauge table entries
+/////////////////////////////////////////////////////////////////////////////
+
+GAUGE_TABLE_BEGIN()
+	GAUGE_TABLE_ENTRY(&pfd)
+	GAUGE_TABLE_ENTRY(&nd)
+	GAUGE_TABLE_ENTRY(&uecam)
+	GAUGE_TABLE_ENTRY(&mcdu)
+	GAUGE_TABLE_ENTRY(&fcu)
+GAUGE_TABLE_END()
+
